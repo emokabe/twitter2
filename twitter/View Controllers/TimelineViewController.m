@@ -10,8 +10,10 @@
 #import "APIManager.h"
 #import "AppDelegate.h"
 #import "LoginViewController.h"
+#import "TweetCell.h"
 
 @interface TimelineViewController () <UITableViewDataSource, UITableViewDelegate>
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @end
 
@@ -20,17 +22,22 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.tableView.dataSource = self;
+    self.tableView.delegate = self;
+    
+    
     // Get timeline
     [[APIManager shared] getHomeTimelineWithCompletion:^(NSArray *tweets, NSError *error) {
         if (tweets) {
             NSLog(@"😎😎😎 Successfully loaded home timeline");
-            for (NSDictionary *dictionary in tweets) {
-                NSString *text = dictionary[@"text"];
-                NSLog(@"%@", text);
-            }
             
-            //self.arrayOfTweets = [[NSArray alloc] initWithArray:tweets];
-            self.arrayOfTweets = [@(tweets) NSMutableArray];
+            NSLog(@"%@", tweets);
+            
+            for (Tweet *t in tweets) {
+                NSLog(t.text);
+            }
+            self.arrayOfTweets = [NSMutableArray arrayWithArray:tweets];
+            [self.tableView reloadData];
             
         } else {
             NSLog(@"😫😫😫 Error getting home timeline: %@", error.localizedDescription);
@@ -61,9 +68,9 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
 
     TweetCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TweetCell"];
-
-    cell.tweet = self.arrayOfTweets[indexPath.row];
-
+    
+    [cell setTweet:self.arrayOfTweets[indexPath.row]];
+    
     return cell;
 }
 
