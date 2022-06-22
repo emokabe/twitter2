@@ -20,6 +20,7 @@
 		BE19658E286138C600539B03 /* ComposeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE19658D286138C600539B03 /* ComposeViewController.m */; };
 		BE1965912862218E00539B03 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = BE1965902862218E00539B03 /* User.m */; };
 		BE196594286223FD00539B03 /* Tweet.m in Sources */ = {isa = PBXBuildFile; fileRef = BE196593286223FD00539B03 /* Tweet.m */; };
+		BE2D6C8528628D2200710C61 /* TweetCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BE2D6C8428628D2200710C61 /* TweetCell.m */; };
 		BEA0CF6828612CBA00F90B1C /* Keys.plist in Resources */ = {isa = PBXBuildFile; fileRef = BEA0CF6728612CBA00F90B1C /* Keys.plist */; };
 /* End PBXBuildFile section */
 
@@ -49,6 +50,8 @@
 		BE1965902862218E00539B03 /* User.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
 		BE196592286223FD00539B03 /* Tweet.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Tweet.h; sourceTree = "<group>"; };
 		BE196593286223FD00539B03 /* Tweet.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Tweet.m; sourceTree = "<group>"; };
+		BE2D6C8328628D2200710C61 /* TweetCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TweetCell.h; sourceTree = "<group>"; };
+		BE2D6C8428628D2200710C61 /* TweetCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TweetCell.m; sourceTree = "<group>"; };
 		BEA0CF6728612CBA00F90B1C /* Keys.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Keys.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -134,6 +137,8 @@
 		6AD278FF20BCBF280085BC29 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				BE2D6C8328628D2200710C61 /* TweetCell.h */,
+				BE2D6C8428628D2200710C61 /* TweetCell.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -256,6 +261,7 @@
 				BE196594286223FD00539B03 /* Tweet.m in Sources */,
 				BE1965912862218E00539B03 /* User.m in Sources */,
 				6AD278F320BCA6020085BC29 /* BDBOAuth1SessionManager+SFAuthenticationSession.m in Sources */,
+				BE2D6C8528628D2200710C61 /* TweetCell.m in Sources */,
 				6AD278E820BC4B970085BC29 /* main.m in Sources */,
 				6AD2790620BCC0380085BC29 /* LoginViewController.m in Sources */,
 				6AD278DA20BC4B950085BC29 /* AppDelegate.m in Sources */,

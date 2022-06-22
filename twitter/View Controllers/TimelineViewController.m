@@ -11,8 +11,7 @@
 #import "AppDelegate.h"
 #import "LoginViewController.h"
 
-@interface TimelineViewController ()
-@property (nonatomic, strong) NSMutableArray *arrayOfTweets;
+@interface TimelineViewController () <UITableViewDataSource, UITableViewDelegate>
 
 @end
 
@@ -31,7 +30,7 @@
             }
             
             //self.arrayOfTweets = [[NSArray alloc] initWithArray:tweets];
-            self.arrayOfTweets = [tweets mutableCopy];
+            self.arrayOfTweets = [@(tweets) NSMutableArray];
             
         } else {
             NSLog(@"😫😫😫 Error getting home timeline: %@", error.localizedDescription);
@@ -53,6 +52,19 @@
     LoginViewController *loginViewController = [storyboard instantiateViewControllerWithIdentifier:@"LoginViewController"];
     appDelegate.window.rootViewController = loginViewController;
     [[APIManager shared] logout];
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection: (NSInteger) section {
+    return 20;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+
+    TweetCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TweetCell"];
+
+    cell.tweet = self.arrayOfTweets[indexPath.row];
+
+    return cell;
 }
 
 
