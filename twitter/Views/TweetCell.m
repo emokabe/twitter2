@@ -12,6 +12,7 @@
 @interface TweetCell ()
 
 @property (weak, nonatomic) IBOutlet UIButton *favoriteButton;
+@property (weak, nonatomic) IBOutlet UIButton *retweetButton;
 
 @end
 
@@ -42,11 +43,23 @@
     self.retweetedCount.text =
     [NSString stringWithFormat:@"%d", self.tweet.retweetCount];
     self.favoritedCount.text = [NSString stringWithFormat:@"%d", self.tweet.favoriteCount];
+    [self refreshData];  // make sure buttons are set to correct image at start
 }
 - (IBAction)didTapFavorite:(id)sender {
     // Update the local tweet model
     if (self.tweet.favorited) {
         // Put code to unfavorite this tweet here
+        self.tweet.favorited = NO;
+        self.tweet.favoriteCount -= 1;
+        
+        [[APIManager shared] favorite:self.tweet completion:^(Tweet *tweet, NSError *error) {
+             if(error){
+                  NSLog(@"Error unfavoriting tweet: %@", error.localizedDescription);
+             }
+             else{
+                 NSLog(@"Successfully unfavorited the following Tweet: %@", tweet.text);
+             }
+         }];
     } else {
         self.tweet.favorited = YES;
         self.tweet.favoriteCount += 1;
@@ -62,16 +75,43 @@
 
     }
     
-    // TODO: Update cell UI
+    // Update cell UI
     [self refreshData];
 }
 
-
-/*
 - (IBAction)didTapRetweet:(id)sender {
+    if (self.tweet.retweeted) {
+        // Put code to unfavorite this tweet here
+        self.tweet.retweeted = NO;
+        self.tweet.retweetCount -= 1;
+        
+        [[APIManager shared] unretweet:self.tweet completion:^(Tweet *tweet, NSError *error) {
+             if(error){
+                  NSLog(@"Error unretweeting tweet: %@", error.localizedDescription);
+             }
+             else{
+                 NSLog(@"Successfully unretweeted the following Tweet: %@", tweet.text);
+             }
+         }];
+    } else {
+        self.tweet.retweeted = YES;
+        self.tweet.retweetCount += 1;
+        
+        [[APIManager shared] retweet:self.tweet completion:^(Tweet *tweet, NSError *error) {
+             if(error){
+                  NSLog(@"Error retweeting tweet: %@", error.localizedDescription);
+             }
+             else{
+                 NSLog(@"Successfully retweeted the following Tweet: %@", tweet.text);
+             }
+         }];
+
+    }
     
+    // Update cell UI
+    [self refreshData];
 }
-*/
+
 
 -(void)refreshData {
     self.favoritedCount.text = [NSString stringWithFormat:@"%d", self.tweet.favoriteCount];
@@ -79,11 +119,15 @@
     [NSString stringWithFormat:@"%d", self.tweet.retweetCount];
     
     if (self.tweet.favorited) {
-        UIImage *favorited_img = [UIImage imageNamed:@"favor-icon-red"];
-        [self.favoriteButton setImage:favorited_img forState:UIControlStateNormal];
+        [self.favoriteButton setImage:[UIImage imageNamed:@"favor-icon-red"] forState:UIControlStateNormal];
     } else {
-        UIImage *unfavorited_img = [UIImage imageNamed:@"favor-icon"];
-        [self.favoriteButton setImage:unfavorited_img forState:UIControlStateNormal];
+        [self.favoriteButton setImage:[UIImage imageNamed:@"favor-icon"] forState:UIControlStateNormal];
+    }
+    
+    if (self.tweet.retweeted) {
+        [self.retweetButton setImage:[UIImage imageNamed:@"retweet-icon-green"] forState:UIControlStateNormal];
+    } else {
+        [self.retweetButton setImage:[UIImage imageNamed:@"retweet-icon"] forState:UIControlStateNormal];
     }
 
 }
