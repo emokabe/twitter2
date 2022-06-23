@@ -140,6 +140,10 @@
                                                     <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                     <state key="normal" image="favor-icon"/>
                                                     <state key="selected" image="favor-icon-red"/>
+                                                    <state key="highlighted" image="favor-icon"/>
+                                                    <connections>
+                                                        <action selector="didTapFavorite:" destination="i4P-BK-FoR" eventType="touchUpInside" id="ADd-jo-xNs"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                             <constraints>
@@ -183,10 +187,10 @@
                                         </constraints>
                                         <connections>
                                             <outlet property="dateLabel" destination="Os1-Hf-THf" id="9DL-x0-hcc"/>
-                                            <outlet property="didTapFavorite" destination="evH-zV-RA0" id="PZh-SM-BwX"/>
                                             <outlet property="didTapReply" destination="dcU-PY-I9N" id="5N4-fT-mZK"/>
                                             <outlet property="didTapRetweet" destination="lUY-YE-FU5" id="BEk-Ue-apv"/>
                                             <outlet property="didTapSendMessage" destination="5hh-YR-cTy" id="4C5-KM-VnR"/>
+                                            <outlet property="favoriteButton" destination="evH-zV-RA0" id="gt6-pR-pbo"/>
                                             <outlet property="favoritedCount" destination="5Ky-vY-1ig" id="6uY-dJ-GAG"/>
                                             <outlet property="nameLabel" destination="PnC-S4-15v" id="Yne-5S-KZa"/>
                                             <outlet property="postTextLabel" destination="E6c-uX-8m4" id="syM-77-MdW"/>

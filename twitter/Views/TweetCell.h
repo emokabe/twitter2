@@ -21,7 +21,6 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet UILabel *retweetedCount;
 @property (weak, nonatomic) IBOutlet UIButton *didTapReply;
 @property (weak, nonatomic) IBOutlet UIButton *didTapRetweet;
-@property (weak, nonatomic) IBOutlet UIButton *didTapFavorite;
 @property (weak, nonatomic) IBOutlet UIButton *didTapSendMessage;
 
 
@@ -31,6 +30,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 
 - (void)setTweet:(Tweet *)tweet;
+
+-  (void)refreshData;
 
 @end
 

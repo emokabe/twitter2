@@ -19,6 +19,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.postText.layer.borderWidth = 0.5;
 }
 
 
