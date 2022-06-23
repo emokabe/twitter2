@@ -53,6 +53,7 @@ static NSString * const baseURLString = @"https://api.twitter.com";
     return self;
 }
 
+// method for getting user's timeline
 - (void)getHomeTimelineWithCompletion:(void(^)(NSArray *tweets, NSError *error))completion {
     
     // Create a GET Request
@@ -64,6 +65,20 @@ static NSString * const baseURLString = @"https://api.twitter.com";
        } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
            // There was a problem
            completion(nil, error);
+    }];
+}
+
+// method for posting a Tweet
+- (void)postStatusWithText:(NSString *)text completion:(void (^)(Tweet *, NSError *))completion {
+    NSString *urlString = @"1.1/statuses/update.json";
+    NSDictionary *parameters = @{@"status": text};
+    
+    // Create a POST Request
+    [self POST:urlString parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, NSDictionary *  _Nullable tweetDictionary) {
+        Tweet *tweet = [[Tweet alloc]initWithDictionary:tweetDictionary];
+        completion(tweet, nil);
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        completion(nil, error);
     }];
 }
 

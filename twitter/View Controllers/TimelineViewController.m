@@ -25,7 +25,7 @@
     
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
-    
+    //self.tableView.rowHeight = UITableViewAutomaticDimension;
     [self fetchTweets];
     
     // Initialize a UIRefreshControl
@@ -43,9 +43,6 @@
             
             NSLog(@"%@", tweets);
             
-            for (Tweet *t in tweets) {
-                NSLog(t.text);
-            }
             self.arrayOfTweets = [NSMutableArray arrayWithArray:tweets];
             [self.tableView reloadData];
             
@@ -63,7 +60,6 @@
 
 
 - (IBAction)didTapLogout:(id)sender {
-    // TimelineViewController.m
     AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
 
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
@@ -73,7 +69,7 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection: (NSInteger) section {
-    return 20;
+    return self.arrayOfTweets.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {

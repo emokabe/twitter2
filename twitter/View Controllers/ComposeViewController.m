@@ -7,6 +7,7 @@
 //
 
 #import "ComposeViewController.h"
+#import "APIManager.h"
 
 @interface ComposeViewController ()
 @property (weak, nonatomic) IBOutlet UITextView *postText;
@@ -17,10 +18,28 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+
+    /*
+    [[APIManager shared] postStatusWithText:^(NSArray *tweets, NSError *error) {
+        //- (void)getHomeTimelineWithCompletion:(void(^)(NSArray *tweets, NSError *error))completion;
+        //- (void)postStatusWithText:(NSString *)text completion:(void (^)(Tweet *, NSError *))completion;
+        if (tweets) {
+            NSLog(@"😎😎😎 Successfully loaded home timeline");
+            
+            NSLog(@"%@", tweets);
+            
+            //self.arrayOfTweets = [NSMutableArray arrayWithArray:tweets];
+            //[self.tableView reloadData];
+            
+        } else {
+            NSLog(@"😫😫😫 Error getting home timeline: %@", error.localizedDescription);
+        }
+    }];
+     */
 }
 
 - (IBAction)closePressed:(id)sender {
+    [self dismissViewControllerAnimated:true completion:nil];
 }
 
 - (IBAction)tweetPressed:(id)sender {
