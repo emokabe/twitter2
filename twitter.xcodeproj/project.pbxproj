@@ -21,6 +21,8 @@
 		BE1965912862218E00539B03 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = BE1965902862218E00539B03 /* User.m */; };
 		BE196594286223FD00539B03 /* Tweet.m in Sources */ = {isa = PBXBuildFile; fileRef = BE196593286223FD00539B03 /* Tweet.m */; };
 		BE2D6C8528628D2200710C61 /* TweetCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BE2D6C8428628D2200710C61 /* TweetCell.m */; };
+		BE70B78528650907003EF9A3 /* TweetCell2.m in Sources */ = {isa = PBXBuildFile; fileRef = BE70B78428650907003EF9A3 /* TweetCell2.m */; };
+		BE70B78828650941003EF9A3 /* TimelineViewController2.m in Sources */ = {isa = PBXBuildFile; fileRef = BE70B78728650941003EF9A3 /* TimelineViewController2.m */; };
 		BEA0CF6828612CBA00F90B1C /* Keys.plist in Resources */ = {isa = PBXBuildFile; fileRef = BEA0CF6728612CBA00F90B1C /* Keys.plist */; };
 /* End PBXBuildFile section */
 
@@ -52,6 +54,10 @@
 		BE196593286223FD00539B03 /* Tweet.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Tweet.m; sourceTree = "<group>"; };
 		BE2D6C8328628D2200710C61 /* TweetCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TweetCell.h; sourceTree = "<group>"; };
 		BE2D6C8428628D2200710C61 /* TweetCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TweetCell.m; sourceTree = "<group>"; };
+		BE70B78328650907003EF9A3 /* TweetCell2.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TweetCell2.h; sourceTree = "<group>"; };
+		BE70B78428650907003EF9A3 /* TweetCell2.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TweetCell2.m; sourceTree = "<group>"; };
+		BE70B78628650941003EF9A3 /* TimelineViewController2.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TimelineViewController2.h; sourceTree = "<group>"; };
+		BE70B78728650941003EF9A3 /* TimelineViewController2.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TimelineViewController2.m; sourceTree = "<group>"; };
 		BEA0CF6728612CBA00F90B1C /* Keys.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Keys.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -100,8 +106,8 @@
 				6AD278FF20BCBF280085BC29 /* Views */,
 				6AD278F720BCB6900085BC29 /* API */,
 				6AD278F820BCBC140085BC29 /* Models */,
-				6AD278D820BC4B950085BC29 /* AppDelegate.h */,
 				6AD278D920BC4B950085BC29 /* AppDelegate.m */,
+				6AD278D820BC4B950085BC29 /* AppDelegate.h */,
 				6AD278DE20BC4B950085BC29 /* Main.storyboard */,
 				6AD278E120BC4B970085BC29 /* Assets.xcassets */,
 				6AD278E320BC4B970085BC29 /* LaunchScreen.storyboard */,
@@ -139,6 +145,8 @@
 			children = (
 				BE2D6C8328628D2200710C61 /* TweetCell.h */,
 				BE2D6C8428628D2200710C61 /* TweetCell.m */,
+				BE70B78328650907003EF9A3 /* TweetCell2.h */,
+				BE70B78428650907003EF9A3 /* TweetCell2.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -152,6 +160,8 @@
 				6AD2790820BCC04D0085BC29 /* TimelineViewController.m */,
 				BE19658C286138C600539B03 /* ComposeViewController.h */,
 				BE19658D286138C600539B03 /* ComposeViewController.m */,
+				BE70B78628650941003EF9A3 /* TimelineViewController2.h */,
+				BE70B78728650941003EF9A3 /* TimelineViewController2.m */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -258,6 +268,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BE70B78828650941003EF9A3 /* TimelineViewController2.m in Sources */,
 				BE196594286223FD00539B03 /* Tweet.m in Sources */,
 				BE1965912862218E00539B03 /* User.m in Sources */,
 				6AD278F320BCA6020085BC29 /* BDBOAuth1SessionManager+SFAuthenticationSession.m in Sources */,
@@ -267,6 +278,7 @@
 				6AD278DA20BC4B950085BC29 /* AppDelegate.m in Sources */,
 				BE19658E286138C600539B03 /* ComposeViewController.m in Sources */,
 				6AD278F620BCB68B0085BC29 /* APIManager.m in Sources */,
+				BE70B78528650907003EF9A3 /* TweetCell2.m in Sources */,
 				6AD2790920BCC04D0085BC29 /* TimelineViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
