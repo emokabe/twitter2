@@ -8,6 +8,9 @@
 
 #import "TweetCell2.h"
 #import "APIManager.h"
+#import "DateTools.h"
+#import "NSDate+DateTools.h"
+//#import "NSDate+DateTools.m"
 
 @interface TweetCell2 ()
 @property (weak, nonatomic) IBOutlet UIButton *favoriteButton;
@@ -30,11 +33,15 @@
     self.profileImage.image = [UIImage imageWithData:urlData];
     self.nameLabel.text = self.tweet.user.name;
     self.screenNameLabel.text = self.tweet.user.screenName;
+    self.dateLabel.text = self.tweet.createdAtString;
+    self.timestampLabel.text = self.tweet.tweetDate.shortTimeAgoSinceNow;
     self.postTextLabel.text = self.tweet.text;
     self.retweetedCount.text =
     [NSString stringWithFormat:@"%d", self.tweet.retweetCount];
     self.favoritedCount.text = [NSString stringWithFormat:@"%d", self.tweet.favoriteCount];
+    
     [self refreshData];  // make sure buttons are set to correct image at start
+    
 }
 
 - (IBAction)didTapRetweet:(id)sender {
