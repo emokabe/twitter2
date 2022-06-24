@@ -27,9 +27,6 @@
         }
         self.idStr = dictionary[@"id_str"];
         self.text = dictionary[@"text"];
-        /* include links */
-        
-        
         self.favoriteCount = [dictionary[@"favorite_count"] intValue];
         self.favorited = [dictionary[@"favorited"] boolValue];
         self.retweetCount = [dictionary[@"retweet_count"] intValue];
@@ -46,9 +43,6 @@
 
         // Format and set createdAtString
         NSString *createdAtOriginalString = dictionary[@"created_at"];
-        
-        //self.dateString = createdAtOriginalString;
-        //NSLog(@"Date@%@", self.dateString);
         
         NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
         formatter.dateFormat = @"E MMM d HH:mm:ss Z y";     // Configure the input format to parse the date string

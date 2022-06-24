@@ -8,7 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-//NS_ASSUME_NONNULL_BEGIN
 
 @interface TimelineViewController2 : UIViewController <UITableViewDataSource>
 
@@ -16,4 +15,3 @@
 
 @end
 
-//NS_ASSUME_NONNULL_END
