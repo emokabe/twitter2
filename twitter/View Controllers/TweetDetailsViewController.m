@@ -49,21 +49,6 @@
     self.retweetCount.text =
     [NSString stringWithFormat:@"%d", self.tweetInfo.retweetCount];
     self.favoriteCount.text = [NSString stringWithFormat:@"%d", self.tweetInfo.favoriteCount];
-
-    /*
-     NSString *URLString = tweet.user.profilePicture;
-     NSURL *url = [NSURL URLWithString:URLString];
-     NSData *urlData = [NSData dataWithContentsOfURL:url];
-     self.profileImage.image = [UIImage imageWithData:urlData];
-     self.nameLabel.text = self.tweet.user.name;
-     self.screenNameLabel.text = self.tweet.user.screenName;
-     self.dateLabel.text = self.tweet.createdAtString;
-     self.timestampLabel.text = self.tweet.tweetDate.shortTimeAgoSinceNow;
-     self.postTextLabel.text = self.tweet.text;
-     self.retweetedCount.text =
-     [NSString stringWithFormat:@"%d", self.tweet.retweetCount];
-     self.favoritedCount.text = [NSString stringWithFormat:@"%d", self.tweet.favoriteCount];
-     */
 }
 
 
@@ -106,7 +91,7 @@
         self.tweetInfo.favorited = NO;
         self.tweetInfo.favoriteCount -= 1;
         
-        [[APIManager shared] favorite:self.tweetInfo completion:^(Tweet *tweet, NSError *error) {
+        [[APIManager shared] unfavorite:self.tweetInfo completion:^(Tweet *tweet, NSError *error) {
              if(error){
                   NSLog(@"Error unfavoriting tweet: %@", error.localizedDescription);
              }
