@@ -10,7 +10,6 @@
 #import "APIManager.h"
 #import "DateTools.h"
 #import "NSDate+DateTools.h"
-//#import "NSDate+DateTools.m"
 
 @interface TweetCell2 ()
 @property (weak, nonatomic) IBOutlet UIButton *favoriteButton;
@@ -41,6 +40,10 @@
     self.favoritedCount.text = [NSString stringWithFormat:@"%d", self.tweet.favoriteCount];
     
     [self refreshData];  // make sure buttons are set to correct image at start
+    
+}
+
+- (void)updateTextView {
     
 }
 

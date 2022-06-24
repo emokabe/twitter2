@@ -8,10 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
-NS_ASSUME_NONNULL_BEGIN
+//NS_ASSUME_NONNULL_BEGIN
 
-@interface TimelineViewController2 : UIViewController
+@interface TimelineViewController2 : UIViewController <UITableViewDataSource>
+
 @property (nonatomic, strong) NSMutableArray *arrayOfTweets;
+
 @end
 
-NS_ASSUME_NONNULL_END
+//NS_ASSUME_NONNULL_END

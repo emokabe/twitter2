@@ -27,6 +27,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet UIButton *didTapReply;
 @property (weak, nonatomic) IBOutlet UIButton *didTapSendMessage;
 
+// -  (void)refreshData;
+
 @end
 
 NS_ASSUME_NONNULL_END

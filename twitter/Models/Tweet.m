@@ -16,6 +16,7 @@
 
     if (self) {
         // Is this a re-tweet?
+        NSLog( @"%@", dictionary);
         NSDictionary *originalTweet = dictionary[@"retweeted_status"];
         if (originalTweet != nil) {
             NSDictionary *userDictionary = dictionary[@"user"];
@@ -26,6 +27,9 @@
         }
         self.idStr = dictionary[@"id_str"];
         self.text = dictionary[@"text"];
+        /* include links */
+        
+        
         self.favoriteCount = [dictionary[@"favorite_count"] intValue];
         self.favorited = [dictionary[@"favorited"] boolValue];
         self.retweetCount = [dictionary[@"retweet_count"] intValue];
