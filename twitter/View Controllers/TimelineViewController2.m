@@ -94,9 +94,18 @@
         ComposeViewController *composeController = (ComposeViewController*)navigationController.topViewController;
         composeController.delegate = self;
     } else if([segue.identifier isEqualToString:@"detailsSegue"]) {
+        // 1 Get indexpath
+        NSIndexPath *indexPath = [self.tableView indexPathForCell:sender];
         
+        // 2 Get movie dictionary
+        Tweet *dataToPass = self.arrayOfTweets[indexPath.row]; // results -> movies
+        
+        // 3 Get reference to destination controller
+        TweetDetailsViewController *detailsVC = [segue destinationViewController];
+        
+        // 4 Pass the local dictionary to the view controller property
+        detailsVC.tweetInfo = dataToPass;
     }
-    
 }
 
 
