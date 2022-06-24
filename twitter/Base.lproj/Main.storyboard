@@ -278,14 +278,16 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8DE-73-dFQ">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8DE-73-dFQ">
                                         <rect key="frame" x="19" y="531" width="30" height="31"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="31" id="3Qb-sh-NIO"/>
                                             <constraint firstAttribute="width" constant="30" id="gpu-2h-B7N"/>
                                         </constraints>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                        <state key="normal" image="reply-icon"/>
+                                        <state key="normal" image="reply-icon">
+                                            <color key="titleColor" systemColor="systemBackgroundColor"/>
+                                        </state>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="skI-Rd-or8">
                                         <rect key="frame" x="83" y="531" width="30" height="31"/>
@@ -294,11 +296,17 @@
                                         </constraints>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                         <state key="normal" image="retweet-icon"/>
+                                        <connections>
+                                            <action selector="didTapRetweet:" destination="eqd-nr-r7d" eventType="touchUpInside" id="ToW-s4-e1S"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wvh-L7-Lkx">
                                         <rect key="frame" x="189" y="531" width="30" height="31"/>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                         <state key="normal" image="favor-icon"/>
+                                        <connections>
+                                            <action selector="didTapFavorite:" destination="eqd-nr-r7d" eventType="touchUpInside" id="ov0-ZT-zPZ"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AyS-Hd-lvb">
                                         <rect key="frame" x="323" y="531" width="32" height="31"/>

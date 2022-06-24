@@ -73,6 +73,11 @@
  }
  */
 
+- (void) viewDidAppear:(BOOL)animated {
+    //[self tableView];
+    [self.tableView reloadData];
+}
+
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection: (NSInteger) section {
     return self.arrayOfTweets.count;

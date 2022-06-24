@@ -10,6 +10,7 @@
 #import "Tweet.h"
 #import "DateTools.h"
 #import "NSDate+DateTools.h"
+#import "APIManager.h"
 
 @interface TweetDetailsViewController ()
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
@@ -33,6 +34,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    [self refreshData];
     
     NSString *URLString = self.tweetInfo.user.profilePicture;
     NSURL *url = [NSURL URLWithString:URLString];
@@ -62,6 +65,93 @@
      self.favoritedCount.text = [NSString stringWithFormat:@"%d", self.tweet.favoriteCount];
      */
 }
+
+
+- (IBAction)didTapRetweet:(id)sender {
+    if (self.tweetInfo.retweeted) {
+        // Put code to unfavorite this tweet here
+        self.tweetInfo.retweeted = NO;
+        self.tweetInfo.retweetCount -= 1;
+        
+        [[APIManager shared] unretweet:self.tweetInfo completion:^(Tweet *tweet, NSError *error) {
+             if(error){
+                  NSLog(@"Error unretweeting tweet: %@", error.localizedDescription);
+             }
+             else{
+                 NSLog(@"Successfully unretweeted the following Tweet: %@", tweet.text);
+             }
+         }];
+    } else {
+        self.tweetInfo.retweeted = YES;
+        self.tweetInfo.retweetCount += 1;
+        
+        [[APIManager shared] retweet:self.tweetInfo completion:^(Tweet *tweet, NSError *error) {
+             if(error){
+                  NSLog(@"Error retweeting tweet: %@", error.localizedDescription);
+             }
+             else{
+                 NSLog(@"Successfully retweeted the following Tweet: %@", tweet.text);
+             }
+         }];
+
+    }
+    
+    // Update cell UI
+    [self refreshData];
+}
+
+- (IBAction)didTapFavorite:(id)sender {
+    if (self.tweetInfo.favorited) {
+        // Put code to unfavorite this tweet here
+        self.tweetInfo.favorited = NO;
+        self.tweetInfo.favoriteCount -= 1;
+        
+        [[APIManager shared] favorite:self.tweetInfo completion:^(Tweet *tweet, NSError *error) {
+             if(error){
+                  NSLog(@"Error unfavoriting tweet: %@", error.localizedDescription);
+             }
+             else{
+                 NSLog(@"Successfully unfavorited the following Tweet: %@", tweet.text);
+             }
+         }];
+    } else {
+        self.tweetInfo.favorited = YES;
+        self.tweetInfo.favoriteCount += 1;
+        
+        [[APIManager shared] favorite:self.tweetInfo completion:^(Tweet *tweet, NSError *error) {
+             if(error){
+                  NSLog(@"Error favoriting tweet: %@", error.localizedDescription);
+             }
+             else{
+                 NSLog(@"Successfully favorited the following Tweet: %@", tweet.text);
+             }
+         }];
+
+    }
+    
+    // Update cell UI
+    [self refreshData];
+}
+
+-(void)refreshData {
+    self.favoriteCount.text = [NSString stringWithFormat:@"%d", self.tweetInfo.favoriteCount];
+    self.retweetCount.text =
+    [NSString stringWithFormat:@"%d", self.tweetInfo.retweetCount];
+    
+    if (self.tweetInfo.favorited) {
+        [self.favoriteButton setImage:[UIImage imageNamed:@"favor-icon-red"] forState:UIControlStateNormal];
+    } else {
+        [self.favoriteButton setImage:[UIImage imageNamed:@"favor-icon"] forState:UIControlStateNormal];
+    }
+    
+    if (self.tweetInfo.retweeted) {
+        [self.retweetButton setImage:[UIImage imageNamed:@"retweet-icon-green"] forState:UIControlStateNormal];
+    } else {
+        [self.retweetButton setImage:[UIImage imageNamed:@"retweet-icon"] forState:UIControlStateNormal];
+    }
+
+}
+
 
 /*
 #pragma mark - Navigation
