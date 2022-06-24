@@ -12,11 +12,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface NSObject ()
 
-/*
-+ (NSAttributedString)makeHyperlink(for path: String, in string: String, as substring: String) -> NSAttributedString {
++ (NSAttributedString)makeHyperlink(for path: String, in string: String, as substring: String) {
     
 }
-*/
 
 @end
 

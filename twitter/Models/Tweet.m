@@ -34,7 +34,12 @@
         self.favorited = [dictionary[@"favorited"] boolValue];
         self.retweetCount = [dictionary[@"retweet_count"] intValue];
         self.retweeted = [dictionary[@"retweeted"] boolValue];
-
+        NSDictionary *entities = dictionary[@"entities"];
+        NSArray *urls = entities[@"urls"];
+        if (urls.count > 0) {
+            self.tweetURL = urls.firstObject[@"url"];
+        }
+        
         // initialize user
         NSDictionary *user = dictionary[@"user"];
         self.user = [[User alloc] initWithDictionary:user];
@@ -50,6 +55,8 @@
         NSDate *date = [formatter dateFromString:createdAtOriginalString];     // Convert String to Date
         
         self.tweetDate = date;
+        
+        self.link = dictionary[@"url"];
         
         formatter.dateStyle = NSDateFormatterShortStyle;     // Configure output format
         formatter.timeStyle = NSDateFormatterNoStyle;

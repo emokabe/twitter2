@@ -26,11 +26,20 @@
 @property (weak, nonatomic) IBOutlet UIButton *favoriteButton;
 @property (weak, nonatomic) IBOutlet UILabel *favoriteCount;
 @property (weak, nonatomic) IBOutlet UIButton *messageButton;
+@property (weak, nonatomic) IBOutlet UITextView *tweetTextView;
 
 
 @end
 
 @implementation TweetDetailsViewController
+
+// gets hyperlink from url and full tweet text
+- (NSAttributedString *)makeHyperlink:(NSString *)path fullString:(NSString *)str {
+    NSRange range = [str rangeOfString:path];
+    NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithString: str];
+    [attributedString addAttribute:NSLinkAttributeName value:path range:range];
+    return attributedString;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -46,9 +55,18 @@
     self.tweetText.text = self.tweetInfo.text;
     self.dateLabel.text = self.tweetInfo.createdAtString;
     self.timestampLabel.text = self.tweetInfo.tweetDate.shortTimeAgoSinceNow;
-    self.retweetCount.text =
-    [NSString stringWithFormat:@"%d", self.tweetInfo.retweetCount];
+    self.retweetCount.text = [NSString stringWithFormat:@"%d", self.tweetInfo.retweetCount];
     self.favoriteCount.text = [NSString stringWithFormat:@"%d", self.tweetInfo.favoriteCount];
+    
+    NSString *path = self.tweetInfo.tweetURL;
+    
+    if (path == nil) {
+        self.tweetTextView.text = self.tweetInfo.text;
+    } else {
+        self.tweetTextView.text = self.tweetInfo.text;
+        NSAttributedString *attributedString = [self makeHyperlink:path fullString:self.tweetInfo.text];
+        self.tweetTextView.attributedText = attributedString;
+    }
 }
 
 
